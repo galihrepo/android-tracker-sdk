@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +28,7 @@ import ruangguru.id.tracking.services.EventService
        override fun postEvent(){
             // 2. Java object to JSON, and assign to a String
             Log.d("postEvent","--> ${eventData.toJson()}")
-            getService().sendEvent(eventData.toJson()).enqueue(object : Callback<String>{
+            getService().sendEvent(JsonParser().parse(eventData.toJson()).asJsonObject).enqueue(object : Callback<String>{
                 override fun onFailure(call: Call<String>?, t: Throwable?) {
                     Log.d("gagal", t.toString())
                 }

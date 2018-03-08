@@ -21,7 +21,7 @@ class Main2Activity : AppCompatActivity() {
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-            RgTrack.setEventType(" fab ${UUID.randomUUID()}").postEvent()
+            RgTrack.setEventType(" fab ${UUID.randomUUID()}").setContext("").postEvent()
             startActivity(Intent(baseContext,Main3Activity::class.java))
         }
     }

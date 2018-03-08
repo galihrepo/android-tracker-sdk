@@ -7,6 +7,7 @@ import android.util.Log
 import com.google.gson.Gson
 import ruangguru.id.tracking.helpers.Connectivity
 import java.sql.Timestamp
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -32,7 +33,7 @@ data class PostEvent(val c: Context){
 		clientOSVersion = getAndroidOSVersion()
 		clientDevice = getDeviceName()
 		deviceId = getDeviceID()
-		clientTimestamp =  Timestamp(System.currentTimeMillis()).toString()
+		clientTimestamp = "${getDateTime()}"
 		connectionType = Connectivity.getNetworkClass(c)
 	}
 
@@ -42,6 +43,12 @@ data class PostEvent(val c: Context){
 		return info.versionName
 	}
 
+	fun getDateTime(): String {
+		return SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS").format(Date())
+	}
+	fun getTime(): String {
+		return SimpleDateFormat("hh:mm:ss.SSS+07:00").format(Date())
+	}
 	fun getAndroidOSVersion(): String {
 		return Build.VERSION.RELEASE
 	}
@@ -79,9 +86,10 @@ data class PostEvent(val c: Context){
 		return "PostEvent(appVersion='$appVersion', eventVersion=$eventVersion, isLogged=$isLogged, clientOS='$clientOS', clientUA=$clientUA, clientDevice='$clientDevice', clientOSVersion='$clientOSVersion', deviceId='$deviceId', clientTimestamp='$clientTimestamp', connectionType='$connectionType', memberId=$memberId, context=$context)"
 	}
 
+
 	fun toJson():String{
-		return "{sessionId:\"${sessionId}\",cookiesId:\"${cookiesId}\",appVersion:\"${appVersion}\",isLogged:$isLogged, clientOS:\"${clientOS}\", clientUA:\"${clientUA}\", clientDevice:\"${clientDevice}\", clientOSVersion:\"${clientOSVersion}\", deviceId:\"${deviceId}\", clientTimestamp:\"${clientTimestamp}\", connectionType:\"${connectionType}\", memberId:\"${memberId}\"" +
-				",context:\"${context}\",eventType:\"${eventType}\"}"
+		return "{\"sessionId\":\"${sessionId}\",\"cookiesId\":\"${cookiesId}\",\"appVersion\":\"${appVersion}\",\"isLogged\":$isLogged, \"clientOS\":\"${clientOS}\", \"clientUA\":\"${clientUA}\", \"clientDevice\":\"${clientDevice}\", \"clientOSVersion\":\"${clientOSVersion}\", \"deviceId\":\"${deviceId}\", \"clientTimestamp\":\"${clientTimestamp}\", \"connectionType\":\"${connectionType}\", \"memberId\":\"${memberId}\"" +
+				", \"eventVersion\":${eventVersion}, \"context\":\"${context}\",\"eventType\":\"${eventType}\"}"
 	}
 
 }

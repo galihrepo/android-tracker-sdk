@@ -6,7 +6,7 @@ buildscript {
         kotlinCoroutines = '0.18'
         buildToolsVersion = '26.0.2'
         compileSdkVersion = 26
-        minSdkVersion = 19
+        minSdkVersion = 16
         targetSdkVersion = 26
         supportLibraryVersion = '26.1.0'
         firebaseVersion = '11.8.0'
