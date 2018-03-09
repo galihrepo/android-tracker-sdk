@@ -30,7 +30,7 @@ dependencies {
 - add  depedency modele
 ```
 dependencies {
-      compile "com.gitbuh.retrofit2:retrofit:$retrofit"
+      compile 'com.github.ruang-guru:android-tracker-sdk:0.0.1"
     }
 ```
 ## Implementation 
