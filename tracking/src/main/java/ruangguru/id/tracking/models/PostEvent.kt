@@ -1,15 +1,12 @@
 package ruangguru.id.tracking.models
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.provider.Settings
-import android.util.Log
-import com.google.gson.Gson
 import ruangguru.id.tracking.helpers.Connectivity
-import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 data class PostEvent(val c: Context){
 	var appVersion: String = "0"
@@ -33,7 +30,7 @@ data class PostEvent(val c: Context){
 		clientOSVersion = getAndroidOSVersion()
 		clientDevice = getDeviceName()
 		deviceId = getDeviceID()
-		clientTimestamp = "${getDateTime()}"
+		clientTimestamp = getDateTime()
 		connectionType = Connectivity.getNetworkClass(c)
 	}
 
@@ -43,11 +40,16 @@ data class PostEvent(val c: Context){
 		return info.versionName
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	fun getDateTime(): String {
-		return SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS").format(Date())
-	}
-	fun getTime(): String {
-		return SimpleDateFormat("hh:mm:ss.SSS+07:00").format(Date())
+		val calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"),
+				Locale.getDefault())
+		val currentLocalTime = calendar.time
+
+		val date = SimpleDateFormat("ZZZZZ", Locale.getDefault())
+		val localTime = date.format(currentLocalTime)
+		println(localTime + "  TimeZone   ")
+		return SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS$localTime").format(Date())
 	}
 	fun getAndroidOSVersion(): String {
 		return Build.VERSION.RELEASE
@@ -87,9 +89,13 @@ data class PostEvent(val c: Context){
 	}
 
 
-	fun toJson():String{
+	 fun toJson():String{
 		return "{\"sessionId\":\"${sessionId}\",\"cookiesId\":\"${cookiesId}\",\"appVersion\":\"${appVersion}\",\"isLogged\":$isLogged, \"clientOS\":\"${clientOS}\", \"clientUA\":\"${clientUA}\", \"clientDevice\":\"${clientDevice}\", \"clientOSVersion\":\"${clientOSVersion}\", \"deviceId\":\"${deviceId}\", \"clientTimestamp\":\"${clientTimestamp}\", \"connectionType\":\"${connectionType}\", \"memberId\":\"${memberId}\"" +
 				", \"eventVersion\":${eventVersion}, \"context\":\"${context}\",\"eventType\":\"${eventType}\"}"
+	}
+
+	fun copyData(data:PostEvent):String{
+		return data.toJson()
 	}
 
 }

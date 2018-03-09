@@ -8,14 +8,8 @@ import java.security.GeneralSecurityException
 import java.security.KeyManagementException
 import java.security.KeyStore
 import java.security.NoSuchAlgorithmException
-import java.util.Arrays
-
-import javax.net.ssl.SSLContext
-import javax.net.ssl.SSLSocket
-import javax.net.ssl.SSLSocketFactory
-import javax.net.ssl.TrustManager
-import javax.net.ssl.TrustManagerFactory
-import javax.net.ssl.X509TrustManager
+import java.util.*
+import javax.net.ssl.*
 
 
 /**

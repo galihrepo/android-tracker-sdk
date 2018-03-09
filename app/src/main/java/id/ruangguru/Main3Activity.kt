@@ -21,6 +21,8 @@ class Main3Activity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             RgTrack.setEventType(" Main3Activity ${UUID.randomUUID()}").postEvent()
+
+            RgTrack.setEventType("").setContext("").setCookiesID("").setMemberID("").isLogin(false).setEventVersion(1).postEvent()
            // startActivity(Intent(baseContext,Main4Activity::class.java))
         }
     }

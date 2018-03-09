@@ -1,6 +1,8 @@
 package ruangguru.id.tracking.helpers
 
-import okhttp3.*
+import okhttp3.CertificatePinner
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

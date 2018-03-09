@@ -14,7 +14,6 @@ class Apps : Application() {
         RgTrack.setBaseUrl("http://application-tracking-api-dot-silicon-airlock-153323.appspot.com/")
         RgTrack.initTracker(baseContext)
         RgTrack.setSessionID("${UUID.randomUUID()}")
-        RgTrack.setCookiesID("${UUID.randomUUID()}")
     }
 
 }
