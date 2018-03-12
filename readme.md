@@ -40,7 +40,7 @@ class Apps : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        RgTrack.setBaseUrl("http://application-tracking-api-dot-silicon-airlock-153323.appspot.com/")
+        RgTrack.setBaseUrl("BASE URL KE SERVER")
         RgTrack.initTracker(baseContext)
         RgTrack.setSessionID("${UUID.randomUUID()}")
     }
