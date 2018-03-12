@@ -15,7 +15,7 @@ import ruangguru.id.tracking.services.EventService
 /**
  * Created by rzgonz on 01/03/18.
  */
- class RgTrack{
+ open class RgTrack{
     companion object :TrackContract.View {
        @SuppressLint("StaticFieldLeak")
        private lateinit var eventData:PostEvent

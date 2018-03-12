@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import com.google.gson.Gson
 import ruangguru.id.tracking.RgTrack
-import ruangguru.id.tracking.models.PostEvent
 
 class MainActivity : AppCompatActivity() {
 
