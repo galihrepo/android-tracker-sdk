@@ -5,14 +5,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'rzgonz'
-            keyPassword 'rzgonz'
-            storeFile file('/Users/rikisetiyawan/Documents/RG/KEYSTORE/Untitled')
-            storePassword 'rzgonz'
-        }
-    }
     compileSdkVersion 26
     defaultConfig {
         applicationId "id.ruangguru"
@@ -21,16 +13,13 @@ android {
         versionCode 1
         versionName '1.2.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
         }
         debug {
-            signingConfig signingConfigs.config
         }
     }
     productFlavors {
@@ -47,5 +36,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     //implementation project(':tracking')
-    compile 'com.github.ruang-guru:android-tracker-sdk:-SNAPSHOT'
+   // compile "com.github.ruang-guru:android-tracker-sdk:0.0.3"
+    compile project(path: ':tracking')
 }
