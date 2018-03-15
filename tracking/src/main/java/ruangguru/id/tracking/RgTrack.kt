@@ -9,8 +9,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import ruangguru.id.tracking.contracts.TrackContract
 import ruangguru.id.tracking.helpers.APIHelper
+import ruangguru.id.tracking.helpers.SharedPreferenceService
 import ruangguru.id.tracking.models.PostEvent
 import ruangguru.id.tracking.services.EventService
+import java.util.*
 
 /**
  * Created by rzgonz on 01/03/18.
@@ -83,6 +85,14 @@ import ruangguru.id.tracking.services.EventService
             return this
         }
 
+        override fun recreateCookiesID(): Companion {
+            SharedPreferenceService(eventData.c).saveString("cookiesID",UUID.randomUUID().toString())
+            Log.d("recreateCookiesID" , UUID.randomUUID().toString() )
+            return this
+        }
 
+        override fun hasCookies(): Boolean {
+            return SharedPreferenceService(eventData.c).getString("cookiesID","").isNotEmpty()
+        }
     }
 }

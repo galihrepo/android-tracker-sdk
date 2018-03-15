@@ -43,6 +43,12 @@ class Apps : Application() {
         RgTrack.setBaseUrl("BASE URL KE SERVER")
         RgTrack.initTracker(baseContext)
         RgTrack.setSessionID("${UUID.randomUUID()}")
+        
+        //Cheeck cookies empty or not for first install
+        if(!RgTrack.hasCookies()){
+               //for recreateCookiesID
+           RgTrack.recreateCookiesID()
+        }
     }
 
 }

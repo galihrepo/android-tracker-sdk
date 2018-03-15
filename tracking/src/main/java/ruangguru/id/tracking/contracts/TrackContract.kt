@@ -20,6 +20,8 @@ object TrackContract {
         fun setMemberID(memberID: String): RgTrack.Companion
         fun setSessionID(sessionID: String): RgTrack.Companion
         fun setCookiesID(cookiesID: String): RgTrack.Companion
+        fun recreateCookiesID(): RgTrack.Companion
+        fun hasCookies(): Boolean
 
     }
 
