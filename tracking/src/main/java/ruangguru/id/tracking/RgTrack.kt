@@ -48,6 +48,7 @@ import java.util.*
 
         override fun initTracker(context: Context) {
             eventData = PostEvent(context)
+            setSessionID("${UUID.randomUUID()}")
         }
 
         override fun isLogin(isLogin: Boolean): Companion {

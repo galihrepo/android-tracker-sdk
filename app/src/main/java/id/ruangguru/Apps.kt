@@ -13,7 +13,6 @@ class Apps : Application() {
         super.onCreate()
         RgTrack.setBaseUrl("BASE URL")
         RgTrack.initTracker(baseContext)
-        RgTrack.setSessionID("${UUID.randomUUID()}")
         if(!RgTrack.hasCookies()){
             RgTrack.recreateCookiesID()
         }
