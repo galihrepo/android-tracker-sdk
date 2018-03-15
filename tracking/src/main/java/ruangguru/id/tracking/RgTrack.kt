@@ -87,8 +87,8 @@ import java.util.*
         }
 
         override fun recreateCookiesID(): Companion {
-            SharedPreferenceService(eventData.c).saveString("cookiesID",UUID.randomUUID().toString())
-            Log.d("recreateCookiesID" , UUID.randomUUID().toString() )
+            eventData.cookiesId = UUID.randomUUID().toString()
+            SharedPreferenceService(eventData.c).saveString("cookiesID",eventData.cookiesId )
             return this
         }
 

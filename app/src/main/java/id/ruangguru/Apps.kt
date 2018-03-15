@@ -11,7 +11,7 @@ class Apps : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        RgTrack.setBaseUrl("BASE URL")
+        RgTrack.setBaseUrl("http://application-tracking-api-dot-silicon-airlock-153323.appspot.com/")
         RgTrack.initTracker(baseContext)
         if(!RgTrack.hasCookies()){
             RgTrack.recreateCookiesID()
